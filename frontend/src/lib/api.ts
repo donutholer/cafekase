@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.HOVO
+const API_URL = import.meta.env.VITE_HOVO
 
 export interface Message {
   role: 'user' | 'assistant';
