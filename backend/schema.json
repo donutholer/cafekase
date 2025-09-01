@@ -9,11 +9,11 @@
   "drinks": [
     {"id":"summer_tonic","name":"Summer Tonic","forms":["iced"],"caffeine_profile":"caffeine","tags":["sour","citrus","bitter-sweet","sweet","energizing","adventurous","not-milky","caffeine"]},
     {"id":"latte_flat_white","name":"Latte/Flat White","forms":["hot","iced"],"caffeine_profile":"caffeine","tags":["creamy","mild","safe","smooth","medium-sweet","caffeine"]},
-    {"id":"maple_latte","name":"Maple Latte","forms":["hot","iced"],"caffeine_profile":"caffeine","tags":["creamy","sweet","fall","cozy","dessert-adjacent","caffeine"]},
-    {"id":"matcha_latte","name":"Matcha Latte","forms":["hot","iced"],"caffeine_profile":"light-caffeine","tags":["earthy","grassy","creamy","no-coffee","calm-energy","slightly-sweet","light-caffeine"]},
-    {"id":"strawberry_matcha_latte","name":"Strawberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet","creamy","dessert","instagram-star","no-coffee","light-caffeine"]},
-    {"id":"blueberry_matcha_latte","name":"Blueberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet","creamy","dessert","instagram-star","no-coffee","light-caffeine"]},
-    {"id":"coconut_cloud","name":"Coconut Cloud","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["light","tropical","textural","light-caffeine","instagram-star","slightly-sweet"]}
+    {"id":"maple_latte","name":"Maple Latte","forms":["hot","iced"],"caffeine_profile":"caffeine","tags":["creamy","sweet","fall","cozy","dessert-adjacent","caffeine", "molasses", "nutty"]},
+    {"id":"matcha_latte","name":"Matcha Latte","forms":["hot","iced"],"caffeine_profile":"light-caffeine","tags":["earthy","grassy","creamy","matcha", "smooth", "no-coffee","calm-energy","slightly-sweet","light-caffeine"]},
+    {"id":"strawberry_matcha_latte","name":"Strawberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet","matcha", "creamy","dessert","instagram-star","no-coffee","light-caffeine", "strawberry"]},
+    {"id":"blueberry_matcha_latte","name":"Blueberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet", "matcha", "creamy","dessert","instagram-star","no-coffee","light-caffeine", "blueberry"]},
+    {"id":"matcha_cloud","name":"Matcha Cloud","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["light","tropical","textural","light-caffeine","instagram-star","slightly-sweet", "grassy", "refreshing", "matcha", "no-coffee"]}
   ],
   "tags_all": [
     "sour","citrus","bitter-sweet","energizing","adventurous","very-adventurous","not-milky","caffeine",
@@ -81,7 +81,7 @@
       "signal":"discovery",
       "rules":[
         {"match_any":["yuzu","citrus","tonic","zest","peel","lemonade","iced tea","arnold palmer"],"apply":{"fruit_sour":1,"discovery_pull":1,"tea_cue":1}},
-        {"match_any":["hojicha","matcha","strawberry","blueberry","maple","coconut"],"apply":{"fruit_mellow":1,"discovery_pull":1}}
+        {"match_any":["matcha","strawberry","blueberry","maple","coconut"],"apply":{"fruit_mellow":1,"discovery_pull":1}}
       ]
     },
     {
