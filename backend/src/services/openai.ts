@@ -27,6 +27,13 @@ const STRICT_ALLOWED_DRINKS = [
 
 // Common hallucinations to catch and redirect
 const HALLUCINATION_MAP: Record<string, string> = {
+  // CRITICAL: Prevent matcha/yuzu combinations
+  'Matcha Yuzu Tonic': 'Summer Tonic',
+  'Yuzu Matcha Tonic': 'Summer Tonic',
+  'Matcha Tonic': 'Summer Tonic',
+  'Yuzu Matcha': 'Matcha Latte',
+  'Matcha Summer Tonic': 'Summer Tonic',
+  
   // Flat White variations -> Latte
   'Flat White': 'Latte',
   'flat white': 'Latte',
@@ -144,9 +151,19 @@ CRITICAL RULES:
 ${menuStr}
 
 2. NEVER mention, suggest, or reference ANY drink not on this list.
-3. If someone's preferences suggest citrus/tonic, recommend "Summer Tonic" (NOT "Yuzu Tonic" or any other name).
-4. If someone wants a simple coffee with milk, recommend "Latte" (NOT "Flat White" or "Cappuccino").
-5. You MUST ask AT LEAST 4 questions before recommending.
+3. NEVER combine drink concepts (NO "Matcha Yuzu Tonic", NO "Matcha Tonic", etc.)
+4. If someone's preferences suggest citrus/sparkling, recommend "Summer Tonic" ONLY.
+5. If someone wants matcha, choose from: Matcha Latte, Strawberry Matcha Latte, Blueberry Matcha Latte, or Matcha Cloud.
+6. NEVER use the word "yuzu" - we don't have yuzu. Our citrus drink is "Summer Tonic".
+7. If someone wants simple coffee with milk, recommend "Latte" (NOT "Flat White").
+8. You MUST ask AT LEAST 4 questions before recommending.
+
+FORBIDDEN: Never create or mention these combinations:
+- Matcha Yuzu Tonic
+- Yuzu Matcha
+- Matcha Tonic
+- Yuzu anything
+- Any drink name not in the list above
 
 Ask ONE question at a time from this list (vessel-style, open, no parentheses):
 - Tell me about your best cafe memory.
@@ -158,11 +175,11 @@ Ask ONE question at a time from this list (vessel-style, open, no parentheses):
 - What would you change about your usual?
 
 When ready to recommend, output EXACTLY:
-DRINK: [Exact name from the list above]
+DRINK: [Exact name from the numbered list above - NO OTHER NAMES]
 WHY: [Under 10 words, casual tone]
 CONFIDENCE: [1-10]
 
-Remember: Only use the EXACT drink names from the numbered list. No exceptions.`;
+Remember: Only the 7 drinks listed above exist. Nothing else.`;
 }
 
 // ---- Validation helper ----

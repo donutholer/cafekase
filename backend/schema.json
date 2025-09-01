@@ -12,49 +12,49 @@
       "name": "Summer Tonic",
       "forms": ["iced"],
       "caffeine_profile": "caffeine",
-      "tags": ["sour", "citrus", "bitter-sweet", "sweet", "energizing", "adventurous", "not-milky", "caffeine", "refreshing", "light"]
+      "tags": ["sour", "citrus", "bitter-sweet", "sweet", "energizing", "adventurous", "not-milky", "caffeine", "refreshing", "light", "sparkling"]
     },
     {
       "id": "latte",
       "name": "Latte",
       "forms": ["hot", "iced"],
       "caffeine_profile": "caffeine",
-      "tags": ["creamy", "mild", "safe", "smooth", "medium-sweet", "caffeine", "milky", "classic"]
+      "tags": ["creamy", "mild", "safe", "smooth", "medium-sweet", "caffeine", "milky", "classic", "simple"]
     },
     {
       "id": "maple_latte",
       "name": "Maple Latte",
       "forms": ["hot", "iced"],
       "caffeine_profile": "caffeine",
-      "tags": ["creamy", "sweet", "fall", "cozy", "dessert-adjacent", "caffeine", "molasses", "nutty", "milky"]
+      "tags": ["creamy", "sweet", "fall", "cozy", "dessert-adjacent", "caffeine", "molasses", "nutty", "milky", "warm"]
     },
     {
       "id": "matcha_latte",
       "name": "Matcha Latte",
       "forms": ["hot", "iced"],
       "caffeine_profile": "light-caffeine",
-      "tags": ["earthy", "grassy", "creamy", "matcha", "smooth", "no-coffee", "calm-energy", "slightly-sweet", "light-caffeine", "milky"]
+      "tags": ["earthy", "grassy", "creamy", "matcha", "smooth", "no-coffee", "calm-energy", "slightly-sweet", "light-caffeine", "milky", "green"]
     },
     {
       "id": "strawberry_matcha_latte",
       "name": "Strawberry Matcha Latte",
       "forms": ["iced"],
       "caffeine_profile": "light-caffeine",
-      "tags": ["fruity", "sweet", "matcha", "creamy", "dessert", "instagram-star", "no-coffee", "light-caffeine", "strawberry", "milky"]
+      "tags": ["fruity", "sweet", "matcha", "creamy", "dessert", "instagram-star", "no-coffee", "light-caffeine", "strawberry", "milky", "pink"]
     },
     {
       "id": "blueberry_matcha_latte",
       "name": "Blueberry Matcha Latte",
       "forms": ["iced"],
       "caffeine_profile": "light-caffeine",
-      "tags": ["fruity", "sweet", "matcha", "creamy", "dessert", "instagram-star", "no-coffee", "light-caffeine", "blueberry", "milky"]
+      "tags": ["fruity", "sweet", "matcha", "creamy", "dessert", "instagram-star", "no-coffee", "light-caffeine", "blueberry", "milky", "purple"]
     },
     {
       "id": "matcha_cloud",
       "name": "Matcha Cloud",
       "forms": ["iced"],
       "caffeine_profile": "light-caffeine",
-      "tags": ["light", "tropical", "textural", "light-caffeine", "instagram-star", "slightly-sweet", "grassy", "refreshing", "matcha", "no-coffee", "airy"]
+      "tags": ["light", "tropical", "textural", "light-caffeine", "instagram-star", "slightly-sweet", "grassy", "refreshing", "matcha", "no-coffee", "airy", "foam"]
     }
   ],
   "strict_menu_enforcement": {
@@ -67,17 +67,12 @@
       "Blueberry Matcha Latte",
       "Matcha Cloud"
     ],
-    "common_hallucinations_to_prevent": [
-      "Flat White",
-      "Cappuccino",
-      "Americano",
-      "Espresso",
+    "forbidden_combinations": [
+      "Matcha Yuzu",
+      "Yuzu Matcha",
+      "Matcha Tonic",
       "Yuzu Tonic",
-      "Yuzu Espresso Tonic",
-      "Hojicha Latte",
-      "Chai Latte",
-      "Mocha",
-      "Cortado"
+      "Matcha Summer Tonic"
     ]
   },
   "questions": [
@@ -86,10 +81,10 @@
       "text": "Tell me about your best cafe memory.",
       "signal": "memory",
       "rules": [
-        {"match_any": ["latte", "foam", "silky", "maple", "vanilla", "fall", "cozy"], "apply": {"texture_creamy": 1, "finish_caramel": 1}},
-        {"match_any": ["matcha", "ceremonial", "green"], "apply": {"coffee_no": 1}},
-        {"match_any": ["yuzu", "lemon", "lime", "grapefruit", "orange", "berry", "sparkling", "tonic", "fizz", "summer", "refresh"], "apply": {"fruit_sour": 1, "texture_clear": 1, "finish_peel": 1}},
-        {"match_any": ["strawberry", "blueberry", "pink", "layered", "pretty"], "apply": {"sweet_high": 1}}
+        {"match_any": ["latte", "foam", "silky", "maple", "vanilla", "fall", "cozy"], "apply": {"texture_creamy": 1, "coffee_signal": 1}},
+        {"match_any": ["matcha", "ceremonial", "green", "tea"], "apply": {"matcha_signal": 1}},
+        {"match_any": ["lemon", "lime", "grapefruit", "orange", "sparkling", "tonic", "fizz", "summer", "refresh"], "apply": {"tonic_signal": 1}},
+        {"match_any": ["strawberry", "blueberry", "pink", "purple", "berry", "fruity"], "apply": {"berry_signal": 1}}
       ]
     },
     {
@@ -97,11 +92,12 @@
       "text": "What tastes are you chasing today?",
       "signal": "flavor",
       "rules": [
-        {"match_any": ["yuzu", "lemon", "lime", "grapefruit", "orange", "citrus", "sour", "tart", "zesty", "peel", "bitter-sweet", "clean"], "apply": {"fruit_sour": 1, "finish_peel": 1}},
-        {"match_any": ["maple", "caramel", "vanilla", "sweet", "cozy"], "apply": {"sweet_high": 1, "finish_caramel": 1}},
-        {"match_any": ["strawberry", "blueberry", "fruity", "berry"], "apply": {"fruit_mellow": 1, "sweet_high": 1}},
-        {"match_any": ["matcha", "green tea", "earthy", "grassy"], "apply": {"coffee_no": 1, "matcha_signal": 1}},
-        {"match_any": ["coffee", "espresso", "caffeine", "energy"], "apply": {"coffee_yes": 1}}
+        {"match_any": ["lemon", "lime", "grapefruit", "citrus", "sour", "tart", "sparkling"], "apply": {"tonic_signal": 1}},
+        {"match_any": ["maple", "caramel", "vanilla", "nutty", "warm"], "apply": {"maple_signal": 1}},
+        {"match_any": ["strawberry", "berry", "pink"], "apply": {"strawberry_signal": 1}},
+        {"match_any": ["blueberry", "berry", "purple"], "apply": {"blueberry_signal": 1}},
+        {"match_any": ["matcha", "green tea", "earthy", "grassy"], "apply": {"matcha_signal": 1}},
+        {"match_any": ["coffee", "espresso", "caffeine", "energy", "bold"], "apply": {"coffee_signal": 1}}
       ]
     },
     {
@@ -109,8 +105,9 @@
       "text": "Describe your perfect first sip.",
       "signal": "texture",
       "rules": [
-        {"match_any": ["silky", "velvet", "cloud", "thick", "creamy", "foam", "hug", "round"], "apply": {"texture_creamy": 1}},
-        {"match_any": ["crisp", "sparkling", "clean", "clear", "tonic", "breeze", "light", "airy"], "apply": {"texture_clear": 1}}
+        {"match_any": ["silky", "velvet", "creamy", "foam", "smooth", "rich"], "apply": {"creamy_texture": 1}},
+        {"match_any": ["crisp", "sparkling", "clean", "clear", "fizzy", "light"], "apply": {"clear_texture": 1}},
+        {"match_any": ["cloud", "airy", "fluffy", "foam"], "apply": {"cloud_texture": 1}}
       ]
     },
     {
@@ -118,8 +115,10 @@
       "text": "What do you want to taste last after it's gone?",
       "signal": "finish",
       "rules": [
-        {"match_any": ["peel", "zest", "clean", "refresh", "bitter-sweet", "citrus"], "apply": {"finish_peel": 1}},
-        {"match_any": ["caramel", "maple", "toast", "comfort", "warm", "sweet"], "apply": {"finish_caramel": 1, "texture_creamy": 1}}
+        {"match_any": ["citrus", "clean", "refresh", "bitter"], "apply": {"tonic_signal": 1}},
+        {"match_any": ["maple", "caramel", "sweet", "warm"], "apply": {"maple_signal": 1}},
+        {"match_any": ["berry", "fruit", "sweet"], "apply": {"berry_signal": 1}},
+        {"match_any": ["grassy", "earthy", "tea"], "apply": {"matcha_signal": 1}}
       ]
     },
     {
@@ -127,9 +126,9 @@
       "text": "What tiny detail would make you smile?",
       "signal": "accent",
       "rules": [
-        {"match_any": ["layered", "pretty", "color", "swirl", "instagram"], "apply": {"instagram_star_hint": 1}},
-        {"match_any": ["microfoam", "silk", "cloud", "foam"], "apply": {"texture_creamy": 1}},
-        {"match_any": ["fizz", "sparkle", "bubbles"], "apply": {"texture_clear": 1}}
+        {"match_any": ["layered", "pretty", "color", "swirl", "instagram", "photo"], "apply": {"instagram_signal": 1}},
+        {"match_any": ["foam", "microfoam", "art"], "apply": {"creamy_texture": 1}},
+        {"match_any": ["fizz", "bubble", "sparkle"], "apply": {"tonic_signal": 1}}
       ]
     },
     {
@@ -137,9 +136,11 @@
       "text": "What's a flavor you've been curious about lately?",
       "signal": "discovery",
       "rules": [
-        {"match_any": ["yuzu", "citrus", "tonic", "zest", "peel"], "apply": {"fruit_sour": 1, "discovery_pull": 1}},
-        {"match_any": ["matcha", "strawberry", "blueberry", "maple"], "apply": {"discovery_pull": 1}},
-        {"match_any": ["green tea", "earthy"], "apply": {"matcha_signal": 1}}
+        {"match_any": ["citrus", "tonic", "sparkling"], "apply": {"tonic_signal": 1}},
+        {"match_any": ["matcha", "green tea"], "apply": {"matcha_signal": 1}},
+        {"match_any": ["strawberry", "pink"], "apply": {"strawberry_signal": 1}},
+        {"match_any": ["blueberry", "purple"], "apply": {"blueberry_signal": 1}},
+        {"match_any": ["maple", "fall", "autumn"], "apply": {"maple_signal": 1}}
       ]
     },
     {
@@ -147,27 +148,22 @@
       "text": "What would you change about your usual?",
       "signal": "delta",
       "rules": [
-        {"match_any": ["cleaner", "lighter", "less sweet", "crisper"], "apply": {"texture_clear": 1, "sweet_low": 1}},
-        {"match_any": ["richer", "creamier", "more sweet", "cozier"], "apply": {"texture_creamy": 1, "sweet_high": 1}}
+        {"match_any": ["lighter", "less sweet", "cleaner"], "apply": {"light_preference": 1}},
+        {"match_any": ["richer", "sweeter", "creamier"], "apply": {"rich_preference": 1}},
+        {"match_any": ["no coffee", "less caffeine"], "apply": {"matcha_signal": 1}},
+        {"match_any": ["more energy", "stronger"], "apply": {"coffee_signal": 1}}
       ]
     }
   ],
   "scoring": {
-    "lock_threshold": 3,
-    "weights_by_signal": {
-      "texture_creamy": {"creamy": 3, "cozy": 1, "milky": 2},
-      "texture_clear": {"not-milky": 3, "refreshing": 2, "light": 2, "airy": 1},
-      "fruit_sour": {"sour": 3, "citrus": 3, "not-milky": 2, "bitter-sweet": 2},
-      "fruit_mellow": {"creamy": 2, "fruity": 3, "sweet": 1},
-      "sweet_high": {"sweet": 3, "dessert": 2, "dessert-adjacent": 1},
-      "sweet_low": {"slightly-sweet": 2, "medium-sweet": 1},
-      "coffee_no": {"no-coffee": 3, "light-caffeine": 1, "matcha": 2},
-      "coffee_yes": {"caffeine": 3, "energizing": 2},
-      "finish_peel": {"bitter-sweet": 2, "refreshing": 1, "citrus": 2},
-      "finish_caramel": {"cozy": 2, "sweet": 1, "molasses": 1, "nutty": 1},
-      "instagram_star_hint": {"instagram-star": 2},
-      "discovery_pull": {"adventurous": 2},
-      "matcha_signal": {"matcha": 3, "grassy": 2, "earthy": 2}
+    "drink_signals": {
+      "Summer Tonic": ["tonic_signal", "clear_texture", "light_preference"],
+      "Latte": ["coffee_signal", "creamy_texture", "simple_preference"],
+      "Maple Latte": ["maple_signal", "coffee_signal", "creamy_texture", "rich_preference"],
+      "Matcha Latte": ["matcha_signal", "creamy_texture", "no_berry"],
+      "Strawberry Matcha Latte": ["strawberry_signal", "matcha_signal", "instagram_signal"],
+      "Blueberry Matcha Latte": ["blueberry_signal", "matcha_signal", "instagram_signal"],
+      "Matcha Cloud": ["matcha_signal", "cloud_texture", "light_preference"]
     }
   }
 }
