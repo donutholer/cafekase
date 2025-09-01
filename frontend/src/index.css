@@ -2,51 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #000;
-  color: #00ff00;
-  overscroll-behavior: none;
+* {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Prevent iOS bounce */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'Roboto', 
+    'Helvetica Neue', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #000000;
+  overscroll-behavior-y: none;
+}
+
+/* Smooth scrolling */
 html {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+  scroll-behavior: smooth;
 }
 
-#root {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+/* Remove input zoom on iOS */
+input, textarea {
+  font-size: 16px !important;
 }
 
-/* Blinking cursor animation */
-@keyframes blink {
-  0%, 50% {
-    opacity: 1;
+/* Safe area padding for modern phones */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+/* Prevent text selection on buttons */
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for desktop */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
   }
-  51%, 100% {
-    opacity: 0;
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
-}
-
-.animate-blink {
-  animation: blink 1s infinite;
-}
-
-/* Safe area for notched devices */
-.safe-top {
-  padding-top: env(safe-area-inset-top);
-}
-
-.safe-bottom {
-  padding-bottom: env(safe-area-inset-bottom);
+  
+  ::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d4;
+  }
 }

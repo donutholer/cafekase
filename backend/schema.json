@@ -14,9 +14,7 @@
     {"id":"strawberry_matcha_latte","name":"Strawberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet","creamy","dessert","instagram-star","no-coffee","light-caffeine"]},
     {"id":"matcha_yuzu_tonic","name":"Matcha Yuzu Tonic","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["sour","citrus","very-adventurous","complex","not-milky","light-caffeine"]},
     {"id":"yuzu_tonic","name":"Yuzu Tonic","forms":["iced"],"caffeine_profile":"no-caffeine","tags":["sour","citrus","no-caffeine","refreshing","light","slightly-sweet"]},
-    {"id":"coconut_cloud","name":"Coconut Cloud","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["light","tropical","textural","light-caffeine","instagram-star","slightly-sweet"]},
-    {"id":"hojicha_latte","name":"Hojicha Latte","forms":["hot","iced"],"caffeine_profile":"light-caffeine","tags":["nutty","toasty","creamy","no-coffee","light-caffeine","slightly-sweet"]},
-    {"id":"dirty_hojicha_latte","name":"Dirty Hojicha Latte","forms":["hot","iced"],"caffeine_profile":"caffeine","tags":["nutty","toasty","creamy","caffeine","complex","slightly-sweet"]}
+    {"id":"coconut_cloud","name":"Coconut Cloud","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["light","tropical","textural","light-caffeine","instagram-star","slightly-sweet"]}
   ],
   "tags_all": ["sour","citrus","bitter-sweet","energizing","adventurous","very-adventurous","not-milky","caffeine","creamy","mild","safe","basic","smooth","medium-sweet","sweet","fall","cozy","dessert-adjacent","no-coffee","calm-energy","slightly-sweet","light-caffeine","fruity","dessert","instagram-star","refreshing","light","tropical","textural","nutty","toasty","complex","earthy","grassy","clean","crisp","peel","caramel"],
   "questions": [
