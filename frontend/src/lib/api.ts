@@ -1,6 +1,9 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
-const API_URL = 'http://localhost:3001';
+dotenv.config();
+
+const API_URL = process.env.HOVO
 
 export interface Message {
   role: 'user' | 'assistant';

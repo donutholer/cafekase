@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // ---- Load schema (v2.2+) ----
-const schemaPath = path.join(__dirname, '../../../shared/schema.json');
+const schemaPath = path.join(__dirname, '../../schema.json');
 const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf-8'));
 
 // ---- Model choice ----
