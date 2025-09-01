@@ -4,14 +4,7 @@ import { motion } from "framer-motion";
 
 export function Chat() {
     const [input, setInput] = useState("");
-    const {
-        messages,
-        loading,
-        sendUserMessage,
-        drinkRecommendation,
-        reset,
-        initialize,
-    } = useChatStore();
+    const { messages, loading, sendUserMessage, initialize } = useChatStore();
     const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
     const spring = {
@@ -159,66 +152,46 @@ export function Chat() {
                     <div className="h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
                     <div className="px-4 sm:px-5 py-4 sm:py-5 supports-[backdrop-filter]:bg-white/60 supports-[backdrop-filter]:backdrop-blur-xl bg-white">
-                        {!drinkRecommendation ? (
-                            <form onSubmit={handleSend} className="space-y-3">
-                                <div className="flex items-center gap-3">
-                                    <div className="flex-1">
-                                        <input
-                                            type="text"
-                                            value={input}
-                                            onChange={(e) =>
-                                                setInput(e.target.value)
-                                            }
-                                            placeholder="Share your preferences..."
-                                            className="w-full rounded-[16px] px-4 py-3 bg-neutral-900/[0.03]
+                        <form onSubmit={handleSend} className="space-y-3">
+                            <div className="flex items-center gap-3">
+                                <div className="flex-1">
+                                    <input
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) =>
+                                            setInput(e.target.value)
+                                        }
+                                        placeholder="Share your preferences..."
+                                        className="w-full rounded-[16px] px-4 py-3 bg-neutral-900/[0.03]
                                  text-neutral-900 placeholder-neutral-500
                                  ring-1 ring-black/10 focus:outline-none focus:ring-black/20
                                  focus:border-transparent transition-[box-shadow,background-color]
                                  duration-300 shadow-[inset_0_1px_0_rgba(255,255,255,.6)]"
-                                            disabled={loading}
-                                        />
-                                    </div>
+                                        disabled={loading}
+                                    />
+                                </div>
 
-                                    <motion.button
-                                        whileHover={{ scale: 1.015, y: -0.5 }}
-                                        whileTap={{ scale: 0.985 }}
-                                        transition={spring}
-                                        type="submit"
-                                        disabled={loading || !input.trim()}
-                                        className="rounded-[14px] px-5 py-2.5 bg-neutral-900 text-white
+                                <motion.button
+                                    whileHover={{ scale: 1.015, y: -0.5 }}
+                                    whileTap={{ scale: 0.985 }}
+                                    transition={spring}
+                                    type="submit"
+                                    disabled={loading || !input.trim()}
+                                    className="rounded-[14px] px-5 py-2.5 bg-neutral-900 text-white
                                ring-1 ring-black/70 shadow-lg
                                disabled:opacity-40 disabled:cursor-not-allowed"
-                                    >
-                                        {loading ? (
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-4 h-4 border-2 border-white/60 border-t-transparent rounded-full animate-spin"></div>
-                                                <span>Sending…</span>
-                                            </div>
-                                        ) : (
-                                            "Send Message"
-                                        )}
-                                    </motion.button>
-                                </div>
-                            </form>
-                        ) : (
-                            <div className="text-center">
-                                <div className="rounded-[16px] p-5 bg-neutral-900/[0.03] ring-1 ring-black/10 shadow-md">
-                                    <p className="text-neutral-700 mb-4">
-                                        ✨ Your perfect drink recommendation is
-                                        ready!
-                                    </p>
-                                    <motion.button
-                                        whileHover={{ scale: 1.015, y: -0.5 }}
-                                        whileTap={{ scale: 0.985 }}
-                                        transition={spring}
-                                        onClick={reset}
-                                        className="rounded-[14px] px-6 py-2.5 bg-neutral-900 text-white ring-1 ring-black/70 shadow-lg"
-                                    >
-                                        Start New Conversation
-                                    </motion.button>
-                                </div>
+                                >
+                                    {loading ? (
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-4 h-4 border-2 border-white/60 border-t-transparent rounded-full animate-spin"></div>
+                                            <span>Sending…</span>
+                                        </div>
+                                    ) : (
+                                        "Send Message"
+                                    )}
+                                </motion.button>
                             </div>
-                        )}
+                        </form>
                     </div>
                 </motion.div>
             </div>
