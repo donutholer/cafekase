@@ -25,154 +25,99 @@ export function Chat() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20"></div>
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-400/30 rounded-full blur-3xl"></div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-8">
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="w-full max-w-[440px] h-[90vh] max-h-[800px] bg-[#0a0a0a] rounded-[40px] overflow-hidden flex flex-col shadow-[0_50px_100px_rgba(255,255,255,0.1),0_0_0_1px_rgba(255,255,255,0.1)]">
         {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
-        >
-          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl">
-            <h1 className="text-5xl font-thin text-gray-800 mb-2 tracking-tight">
-              Cafékase
-            </h1>
-            <p className="text-gray-600 font-light">
-              Your perfect drink, thoughtfully curated
-            </p>
-          </div>
-        </motion.div>
+        <div className="px-8 pt-8 pb-6 bg-gradient-to-b from-[#0a0a0a] to-transparent relative z-10">
+          <h1 className="text-[28px] font-semibold tracking-tight text-white mb-1">☕ Cafekase</h1>
+          <p className="text-sm text-gray-500 font-normal">Curated coffee, perfectly yours</p>
+        </div>
 
-        {/* Chat Container */}
-        <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl overflow-hidden">
-          {/* Messages */}
-          <div className="h-[500px] overflow-y-auto p-8 space-y-6 scrollbar-hide">
-            {messages.filter(m => m.content).map((message, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto px-6 pb-6 scrollbar-hide">
+          {messages.filter(m => m.content).map((message, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`flex mb-4 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div 
+                className={`max-w-[75%] px-[18px] py-[14px] rounded-[20px] text-[15px] leading-relaxed ${
+                  message.role === 'user' 
+                    ? 'bg-white text-black' 
+                    : 'bg-[#1a1a1a] text-white border border-[#2a2a2a]'
+                }`}
               >
-                <div 
-                  className={`max-w-[70%] backdrop-blur-lg border border-white/30 rounded-2xl p-6 shadow-lg ${
-                    message.role === 'user' 
-                      ? 'bg-blue-500/20 text-gray-800' 
-                      : 'bg-white/20 text-gray-700'
-                  }`}
-                >
-                  <p className="text-sm leading-relaxed font-light">
-                    {message.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-            
-            {loading && (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex justify-start"
-              >
-                <div className="backdrop-blur-lg bg-white/20 border border-white/30 rounded-2xl p-6 shadow-lg">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" 
-                           style={{ animationDelay: '0.1s' }} />
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" 
-                           style={{ animationDelay: '0.2s' }} />
-                    </div>
-                    <span className="text-sm text-gray-500 font-light">
-                      Thinking...
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input Section */}
-          <div className="border-t border-white/20 bg-white/5 backdrop-blur-sm p-6">
-            {!drinkRecommendation ? (
-              <form onSubmit={handleSend} className="space-y-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Share your preferences..."
-                    className="w-full backdrop-blur-lg bg-white/20 border border-white/30 rounded-2xl 
-                             px-6 py-4 text-gray-700 placeholder-gray-400 focus:outline-none 
-                             focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 
-                             transition-all duration-300 font-light shadow-lg"
-                    disabled={loading}
-                  />
-                </div>
-                
-                <div className="flex justify-center">
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    disabled={loading || !input.trim()}
-                    className="backdrop-blur-lg bg-blue-500/30 hover:bg-blue-500/40 border 
-                             border-blue-400/50 text-gray-700 px-8 py-3 rounded-2xl 
-                             transition-all duration-300 disabled:opacity-50 
-                             disabled:cursor-not-allowed font-light shadow-lg
-                             hover:shadow-xl hover:border-blue-400/70"
-                  >
-                    {loading ? (
-                      <div className="flex items-center space-x-2">
-                        <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
-                        <span>Sending...</span>
-                      </div>
-                    ) : (
-                      'Send Message'
-                    )}
-                  </motion.button>
-                </div>
-              </form>
-            ) : (
-              <div className="text-center space-y-6">
-                <div className="backdrop-blur-lg bg-green-500/20 border border-green-400/30 rounded-2xl p-6 shadow-lg">
-                  <p className="text-gray-700 font-light mb-4">
-                    ✨ Your perfect drink recommendation is ready!
-                  </p>
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={reset}
-                    className="backdrop-blur-lg bg-purple-500/30 hover:bg-purple-500/40 border 
-                             border-purple-400/50 text-gray-700 px-8 py-3 rounded-2xl 
-                             transition-all duration-300 font-light shadow-lg
-                             hover:shadow-xl hover:border-purple-400/70"
-                  >
-                    Start New Conversation
-                  </motion.button>
+                {message.content}
+              </div>
+            </motion.div>
+          ))}
+          
+          {loading && (
+            <div className="flex justify-start mb-4">
+              <div className="bg-[#1a1a1a] px-5 py-4 rounded-[20px] border border-[#2a2a2a]">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+                  <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+          
+          {drinkRecommendation && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex justify-start mb-4"
+            >
+              <div className="w-full">
+                <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-[20px] p-6">
+                  <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">Your Perfect Drink</div>
+                  <div className="text-xl font-medium text-white">{drinkRecommendation}</div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+          
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Input or Restart */}
+        <div className="p-6 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+          {!drinkRecommendation ? (
+            <form onSubmit={handleSend} className="flex gap-3 items-center">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type your message..."
+                className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] text-white px-5 py-[14px] rounded-full text-[15px] outline-none transition-all focus:bg-[#222] focus:border-[#444] placeholder-gray-500"
+                disabled={loading}
+              />
+              <button 
+                type="submit"
+                disabled={loading || !input.trim()}
+                className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center transition-all hover:scale-105 hover:shadow-[0_4px_20px_rgba(255,255,255,0.3)] active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          ) : (
+            <button 
+              onClick={reset}
+              className="w-full py-4 bg-white text-black rounded-full text-base font-medium transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,255,255,0.2)] active:translate-y-0"
+            >
+              Start New Order
+            </button>
+          )}
         </div>
       </div>
-
-      <style>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   );
 }
