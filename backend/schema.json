@@ -1,5 +1,5 @@
 {
-  "version": "2.3.2",
+  "version": "3.0.0",
   "style": {
     "ask_one_at_a_time": true,
     "tone": "vessel, short, open, metaphorical",
@@ -7,132 +7,167 @@
     "no_labels_in_questions": true
   },
   "drinks": [
-    {"id":"summer_tonic","name":"Summer Tonic","forms":["iced"],"caffeine_profile":"caffeine","tags":["sour","citrus","bitter-sweet","sweet","energizing","adventurous","not-milky","caffeine"]},
-    {"id":"latte_flat_white","name":"Latte/Flat White","forms":["hot","iced"],"caffeine_profile":"caffeine","tags":["creamy","mild","safe","smooth","medium-sweet","caffeine"]},
-    {"id":"maple_latte","name":"Maple Latte","forms":["hot","iced"],"caffeine_profile":"caffeine","tags":["creamy","sweet","fall","cozy","dessert-adjacent","caffeine", "molasses", "nutty"]},
-    {"id":"matcha_latte","name":"Matcha Latte","forms":["hot","iced"],"caffeine_profile":"light-caffeine","tags":["earthy","grassy","creamy","matcha", "smooth", "no-coffee","calm-energy","slightly-sweet","light-caffeine"]},
-    {"id":"strawberry_matcha_latte","name":"Strawberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet","matcha", "creamy","dessert","instagram-star","no-coffee","light-caffeine", "strawberry"]},
-    {"id":"blueberry_matcha_latte","name":"Blueberry Matcha Latte","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["fruity","sweet", "matcha", "creamy","dessert","instagram-star","no-coffee","light-caffeine", "blueberry"]},
-    {"id":"matcha_cloud","name":"Matcha Cloud","forms":["iced"],"caffeine_profile":"light-caffeine","tags":["light","tropical","textural","light-caffeine","instagram-star","slightly-sweet", "grassy", "refreshing", "matcha", "no-coffee"]}
-  ],
-  "tags_all": [
-    "sour","citrus","bitter-sweet","energizing","adventurous","very-adventurous","not-milky","caffeine",
-    "creamy","mild","safe","basic","smooth","medium-sweet","sweet","fall","cozy","dessert-adjacent",
-    "no-coffee","calm-energy","slightly-sweet","light-caffeine","fruity","dessert","instagram-star",
-    "refreshing","light","tropical","textural","nutty","toasty","complex","earthy","grassy",
-    "clean","crisp","peel","caramel"
-  ],
-  "questions": [
     {
-      "id":"memory_best",
-      "text":"Tell me about your best cafe memory.",
-      "signal":"memory",
-      "rules":[
-        {"match_any":["latte","flat white","foam","silky","maple","vanilla","fall","cozy"],"apply":{"texture_creamy":1,"finish_caramel":1}},
-        {"match_any":["matcha","ceremonial","green"],"apply":{"coffee_no":1}},
-        {"match_any":["hojicha","roasty","toasty","nutty"],"apply":{"coffee_no":1,"texture_creamy":1,"finish_caramel":1}},
-        {"match_any":["yuzu","lemon","lime","grapefruit","orange","berry","sparkling","tonic","fizz","summer","iced","refresh","stairs","street"],"apply":{"fruit_sour":1,"texture_clear":1,"finish_peel":1}},
-        {"match_any":["strawberry","blueberry","pink","layered","pretty"],"apply":{"sweet_high":1}}
-      ]
+      "id": "summer_tonic",
+      "name": "Summer Tonic",
+      "forms": ["iced"],
+      "caffeine_profile": "caffeine",
+      "tags": ["sour", "citrus", "bitter-sweet", "sweet", "energizing", "adventurous", "not-milky", "caffeine", "refreshing", "light"]
     },
     {
-      "id":"flavor_chase",
-      "text":"What tastes are you chasing today?",
-      "signal":"flavor",
-      "rules":[
-        {"match_any":["yuzu","lemon","lime","grapefruit","orange","berry","citrus","sour","tart","zesty","peel","bitter-sweet","clean","lemonade"],"apply":{"fruit_sour":1,"finish_peel":1}},
-        {"match_any":["mango","honeydew","melon","coconut","banana","peach","lychee","pineapple","strawberry","blueberry","vanilla","maple","caramel"],"apply":{"fruit_mellow":1,"finish_caramel":1}},
-        {"match_any":["iced tea","black tea","arnold palmer","half and half"],"apply":{"fruit_sour":1,"texture_clear":1,"tea_cue":1}},
-        {"match_any":["not sweet","unsweetened","barely","light","low","clean"],"apply":{"sweet_low":1}},
-        {"match_any":["sweet","dessert","treat","maple","strawberry","blueberry","syrup","rich"],"apply":{"sweet_high":1}}
-      ]
+      "id": "latte",
+      "name": "Latte",
+      "forms": ["hot", "iced"],
+      "caffeine_profile": "caffeine",
+      "tags": ["creamy", "mild", "safe", "smooth", "medium-sweet", "caffeine", "milky", "classic"]
     },
     {
-      "id":"first_sip",
-      "text":"Describe your perfect first sip.",
-      "signal":"texture",
-      "rules":[
-        {"match_any":["silky","velvet","cloud","thick","creamy","foam","hug","round"],"apply":{"texture_creamy":1}},
-        {"match_any":["crisp","sparkling","clean","clear","tonic","breeze","light","glass"],"apply":{"texture_clear":1}}
-      ]
+      "id": "maple_latte",
+      "name": "Maple Latte",
+      "forms": ["hot", "iced"],
+      "caffeine_profile": "caffeine",
+      "tags": ["creamy", "sweet", "fall", "cozy", "dessert-adjacent", "caffeine", "molasses", "nutty", "milky"]
     },
     {
-      "id":"finish_note",
-      "text":"What do you want to taste last after it’s gone?",
-      "signal":"finish",
-      "rules":[
-        {"match_any":["peel","zest","clean","refresh","bitter-sweet"],"apply":{"finish_peel":1}},
-        {"match_any":["caramel","maple","toast","comfort","warm"],"apply":{"finish_caramel":1,"texture_creamy":1}}
-      ]
+      "id": "matcha_latte",
+      "name": "Matcha Latte",
+      "forms": ["hot", "iced"],
+      "caffeine_profile": "light-caffeine",
+      "tags": ["earthy", "grassy", "creamy", "matcha", "smooth", "no-coffee", "calm-energy", "slightly-sweet", "light-caffeine", "milky"]
     },
     {
-      "id":"tiny_detail",
-      "text":"What tiny detail would make you smile?",
-      "signal":"accent",
-      "rules":[
-        {"match_any":["layered","pretty","color","swirl"],"apply":{"instagram_star_hint":1}},
-        {"match_any":["microfoam","silk","cloud"],"apply":{"texture_creamy":1}},
-        {"match_any":["fizz","sparkle"],"apply":{"texture_clear":1}}
-      ]
+      "id": "strawberry_matcha_latte",
+      "name": "Strawberry Matcha Latte",
+      "forms": ["iced"],
+      "caffeine_profile": "light-caffeine",
+      "tags": ["fruity", "sweet", "matcha", "creamy", "dessert", "instagram-star", "no-coffee", "light-caffeine", "strawberry", "milky"]
     },
     {
-      "id":"curious_flavor",
-      "text":"What’s a flavor you’ve been curious about lately?",
-      "signal":"discovery",
-      "rules":[
-        {"match_any":["yuzu","citrus","tonic","zest","peel","lemonade","iced tea","arnold palmer"],"apply":{"fruit_sour":1,"discovery_pull":1,"tea_cue":1}},
-        {"match_any":["matcha","strawberry","blueberry","maple","coconut"],"apply":{"fruit_mellow":1,"discovery_pull":1}}
-      ]
+      "id": "blueberry_matcha_latte",
+      "name": "Blueberry Matcha Latte",
+      "forms": ["iced"],
+      "caffeine_profile": "light-caffeine",
+      "tags": ["fruity", "sweet", "matcha", "creamy", "dessert", "instagram-star", "no-coffee", "light-caffeine", "blueberry", "milky"]
     },
     {
-      "id":"change_usual",
-      "text":"What would you change about your usual?",
-      "signal":"delta",
-      "rules":[
-        {"match_any":["cleaner","lighter","less sweet","crisper"],"apply":{"texture_clear":1,"sweet_low":1}},
-        {"match_any":["richer","creamier","more sweet","cozier"],"apply":{"texture_creamy":1,"sweet_high":1}}
-      ]
+      "id": "matcha_cloud",
+      "name": "Matcha Cloud",
+      "forms": ["iced"],
+      "caffeine_profile": "light-caffeine",
+      "tags": ["light", "tropical", "textural", "light-caffeine", "instagram-star", "slightly-sweet", "grassy", "refreshing", "matcha", "no-coffee", "airy"]
     }
   ],
-  "gibberish_guard": [
-    "That wasn’t words. Try again.",
-    "Last chance. Use normal human sounds."
+  "strict_menu_enforcement": {
+    "allowed_names_only": [
+      "Summer Tonic",
+      "Latte",
+      "Maple Latte",
+      "Matcha Latte",
+      "Strawberry Matcha Latte",
+      "Blueberry Matcha Latte",
+      "Matcha Cloud"
+    ],
+    "common_hallucinations_to_prevent": [
+      "Flat White",
+      "Cappuccino",
+      "Americano",
+      "Espresso",
+      "Yuzu Tonic",
+      "Yuzu Espresso Tonic",
+      "Hojicha Latte",
+      "Chai Latte",
+      "Mocha",
+      "Cortado"
+    ]
+  },
+  "questions": [
+    {
+      "id": "memory_best",
+      "text": "Tell me about your best cafe memory.",
+      "signal": "memory",
+      "rules": [
+        {"match_any": ["latte", "foam", "silky", "maple", "vanilla", "fall", "cozy"], "apply": {"texture_creamy": 1, "finish_caramel": 1}},
+        {"match_any": ["matcha", "ceremonial", "green"], "apply": {"coffee_no": 1}},
+        {"match_any": ["yuzu", "lemon", "lime", "grapefruit", "orange", "berry", "sparkling", "tonic", "fizz", "summer", "refresh"], "apply": {"fruit_sour": 1, "texture_clear": 1, "finish_peel": 1}},
+        {"match_any": ["strawberry", "blueberry", "pink", "layered", "pretty"], "apply": {"sweet_high": 1}}
+      ]
+    },
+    {
+      "id": "flavor_chase",
+      "text": "What tastes are you chasing today?",
+      "signal": "flavor",
+      "rules": [
+        {"match_any": ["yuzu", "lemon", "lime", "grapefruit", "orange", "citrus", "sour", "tart", "zesty", "peel", "bitter-sweet", "clean"], "apply": {"fruit_sour": 1, "finish_peel": 1}},
+        {"match_any": ["maple", "caramel", "vanilla", "sweet", "cozy"], "apply": {"sweet_high": 1, "finish_caramel": 1}},
+        {"match_any": ["strawberry", "blueberry", "fruity", "berry"], "apply": {"fruit_mellow": 1, "sweet_high": 1}},
+        {"match_any": ["matcha", "green tea", "earthy", "grassy"], "apply": {"coffee_no": 1, "matcha_signal": 1}},
+        {"match_any": ["coffee", "espresso", "caffeine", "energy"], "apply": {"coffee_yes": 1}}
+      ]
+    },
+    {
+      "id": "first_sip",
+      "text": "Describe your perfect first sip.",
+      "signal": "texture",
+      "rules": [
+        {"match_any": ["silky", "velvet", "cloud", "thick", "creamy", "foam", "hug", "round"], "apply": {"texture_creamy": 1}},
+        {"match_any": ["crisp", "sparkling", "clean", "clear", "tonic", "breeze", "light", "airy"], "apply": {"texture_clear": 1}}
+      ]
+    },
+    {
+      "id": "finish_note",
+      "text": "What do you want to taste last after it's gone?",
+      "signal": "finish",
+      "rules": [
+        {"match_any": ["peel", "zest", "clean", "refresh", "bitter-sweet", "citrus"], "apply": {"finish_peel": 1}},
+        {"match_any": ["caramel", "maple", "toast", "comfort", "warm", "sweet"], "apply": {"finish_caramel": 1, "texture_creamy": 1}}
+      ]
+    },
+    {
+      "id": "tiny_detail",
+      "text": "What tiny detail would make you smile?",
+      "signal": "accent",
+      "rules": [
+        {"match_any": ["layered", "pretty", "color", "swirl", "instagram"], "apply": {"instagram_star_hint": 1}},
+        {"match_any": ["microfoam", "silk", "cloud", "foam"], "apply": {"texture_creamy": 1}},
+        {"match_any": ["fizz", "sparkle", "bubbles"], "apply": {"texture_clear": 1}}
+      ]
+    },
+    {
+      "id": "curious_flavor",
+      "text": "What's a flavor you've been curious about lately?",
+      "signal": "discovery",
+      "rules": [
+        {"match_any": ["yuzu", "citrus", "tonic", "zest", "peel"], "apply": {"fruit_sour": 1, "discovery_pull": 1}},
+        {"match_any": ["matcha", "strawberry", "blueberry", "maple"], "apply": {"discovery_pull": 1}},
+        {"match_any": ["green tea", "earthy"], "apply": {"matcha_signal": 1}}
+      ]
+    },
+    {
+      "id": "change_usual",
+      "text": "What would you change about your usual?",
+      "signal": "delta",
+      "rules": [
+        {"match_any": ["cleaner", "lighter", "less sweet", "crisper"], "apply": {"texture_clear": 1, "sweet_low": 1}},
+        {"match_any": ["richer", "creamier", "more sweet", "cozier"], "apply": {"texture_creamy": 1, "sweet_high": 1}}
+      ]
+    }
   ],
   "scoring": {
     "lock_threshold": 3,
-    "tie_breakers": ["texture_fit","flavor_fit","sweetness_fit","finish_fit"],
     "weights_by_signal": {
-      "texture_creamy": {"creamy": 3, "cozy": 1},
-      "texture_clear": {"not-milky": 3, "refreshing": 2, "light": 1},
-      "fruit_sour": {"sour": 3, "citrus": 3, "not-milky": 2},
-      "fruit_mellow": {"creamy": 2, "fruity": 2, "sweet": 1},
-      "sweet_high": {"sweet": 3},
+      "texture_creamy": {"creamy": 3, "cozy": 1, "milky": 2},
+      "texture_clear": {"not-milky": 3, "refreshing": 2, "light": 2, "airy": 1},
+      "fruit_sour": {"sour": 3, "citrus": 3, "not-milky": 2, "bitter-sweet": 2},
+      "fruit_mellow": {"creamy": 2, "fruity": 3, "sweet": 1},
+      "sweet_high": {"sweet": 3, "dessert": 2, "dessert-adjacent": 1},
       "sweet_low": {"slightly-sweet": 2, "medium-sweet": 1},
-      "coffee_no": {"no-coffee": 3, "light-caffeine": 1},
-      "finish_peel": {"bitter-sweet": 1, "refreshing": 1},
-      "finish_caramel": {"cozy": 1, "sweet": 1},
-      "instagram_star_hint": {"instagram-star": 1},
-      "discovery_pull": {"adventurous": 1},
-      "tea_cue": {"light-caffeine": 1}
+      "coffee_no": {"no-coffee": 3, "light-caffeine": 1, "matcha": 2},
+      "coffee_yes": {"caffeine": 3, "energizing": 2},
+      "finish_peel": {"bitter-sweet": 2, "refreshing": 1, "citrus": 2},
+      "finish_caramel": {"cozy": 2, "sweet": 1, "molasses": 1, "nutty": 1},
+      "instagram_star_hint": {"instagram-star": 2},
+      "discovery_pull": {"adventurous": 2},
+      "matcha_signal": {"matcha": 3, "grassy": 2, "earthy": 2}
     }
-  },
-  "selection": {
-    "algorithm": "score_tags_per_drink",
-    "steps": [
-      "Initialize drink scores at 0.",
-      "On each answer: apply question.rules → add weighted tag deltas via scoring.weights_by_signal.",
-      "Pre-filter candidate drinks by UI toggles (forms, caffeine_profile).",
-      "Project tag scores onto candidate drinks by summing matched tags.",
-      "If top drink leads by ≥ lock_threshold, lock recommendation.",
-      "If not locked: ask the next question that reduces uncertainty: prefer [memory_best, flavor_chase, first_sip, finish_note], then [tiny_detail, curious_flavor, change_usual].",
-      "If input is nonsense, respond with the next gibberish_guard line and re-ask the last question."
-    ]
-  },
-  "output_format": {
-    "final": [
-      "DRINK: [Name only]",
-      "WHY: [Under 10 words, casual tone]",
-      "CONFIDENCE: [1-10]"
-    ]
   }
 }
