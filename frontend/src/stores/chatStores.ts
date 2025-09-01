@@ -38,7 +38,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
         content: response.response 
       };
       
-      set((state) => ({ 
+      set((_) => ({ 
         messages: [assistantMessage],
         loading: false
       }));
